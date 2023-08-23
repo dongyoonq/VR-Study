@@ -2320,9 +2320,17 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9535714, guid: 016e7bf62a334b6408f97e97b5e49ec7, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9535714, guid: 016e7bf62a334b6408f97e97b5e49ec7, type: 3}
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 7122db09428d8d149827cf7b2debf93a, type: 2}
+    - target: {fileID: 9535714, guid: 016e7bf62a334b6408f97e97b5e49ec7, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 016e7bf62a334b6408f97e97b5e49ec7, type: 3}
 --- !u!1 &1434317921 stripped
@@ -2343,8 +2351,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 100
---- !u!143 &1434317925
-CharacterController:
+--- !u!136 &1434317925
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -2353,14 +2361,26 @@ CharacterController:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
+  m_Radius: 0.84539515
+  m_Height: 5.6285295
+  m_Direction: 1
+  m_Center: {x: -0.08583766, y: 2.8644347, z: -4.896177e-10}
+--- !u!54 &1434317926
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1434317921}
   serializedVersion: 2
-  m_Height: 7
-  m_Radius: 0.8
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
-  m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 2, z: 0}
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 80
+  m_CollisionDetection: 0
 --- !u!1 &1465446099
 GameObject:
   m_ObjectHideFlags: 0
