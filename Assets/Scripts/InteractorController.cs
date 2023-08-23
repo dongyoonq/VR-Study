@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.XR.Interaction.Toolkit;
+using UnityEngine.XR.Interaction.Toolkit.UI;
 
 public class InteractorController : MonoBehaviour
 {
@@ -28,6 +29,8 @@ public class InteractorController : MonoBehaviour
         {
             rayInteractor.selectEntered.AddListener(OnRaySelectEnter);
             rayInteractor.selectExited.AddListener(OnRaySelectExit);
+            rayInteractor.uiHoverEntered.AddListener(OnUIHoverEnter);
+            rayInteractor.uiHoverExited.AddListener(OnUIHoverExit);
         }
 
         if (teleportModeInput != null)
@@ -43,6 +46,8 @@ public class InteractorController : MonoBehaviour
         {
             rayInteractor.selectEntered.RemoveListener(OnRaySelectEnter);
             rayInteractor.selectExited.RemoveListener(OnRaySelectExit);
+            rayInteractor.uiHoverEntered.RemoveListener(OnUIHoverEnter);
+            rayInteractor.uiHoverExited.RemoveListener(OnUIHoverExit);
         }
 
         if (teleportModeInput != null)
@@ -62,6 +67,22 @@ public class InteractorController : MonoBehaviour
     }
 
     private void OnRaySelectExit(SelectExitEventArgs args)
+    {
+        foreach (LocomotionProvider provider in locomotionProviders)
+        {
+            provider.gameObject.SetActive(true);
+        }
+    }
+
+    private void OnUIHoverEnter(UIHoverEventArgs args)
+    {
+        foreach (LocomotionProvider provider in locomotionProviders)
+        {
+            provider.gameObject.SetActive(false);
+        }
+    }
+
+    private void OnUIHoverExit(UIHoverEventArgs args)
     {
         foreach (LocomotionProvider provider in locomotionProviders)
         {
